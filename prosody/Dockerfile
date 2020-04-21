@@ -1,4 +1,4 @@
-ARG JITSI_REPO=jitsi
+ARG JITSI_REPO=piccobit
 
 FROM ${JITSI_REPO}/base as builder
 
