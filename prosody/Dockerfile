@@ -1,5 +1,5 @@
-ARG JITSI_REPO=piccobit
-FROM ${JITSI_REPO}/jitsibase
+ARG JITSI_REPO=quay.io/piccobit
+FROM ${JITSI_REPO}/jitsi-base
 
 ADD https://prosody.im/files/prosody-debian-packages.key /tmp/prosody.key
 
