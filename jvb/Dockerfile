@@ -1,4 +1,4 @@
-ARG JITSI_REPO=piccobit
+ARG JITSI_REPO=quay.io/piccobit
 FROM ${JITSI_REPO}/jitsi-base-java
 
 RUN \
