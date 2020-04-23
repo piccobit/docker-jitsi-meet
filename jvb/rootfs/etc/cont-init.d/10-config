@@ -5,12 +5,6 @@ if [[ -z $JVB_AUTH_PASSWORD ]]; then
     exit 1
 fi
 
-if [[ ! -f /config/.keep ]]; then
-    rm -rf /config
-
-    mkdir -p /config
-fi
-
 if [[ ! -f /config/sip-communicator.properties ]]; then
     tpl /defaults/sip-communicator.properties > /config/sip-communicator.properties
 fi
@@ -18,5 +12,3 @@ fi
 if [[ ! -f /config/logging.properties ]]; then
     cp /defaults/logging.properties /config
 fi
-
-chown -R jvb:jitsi /config
