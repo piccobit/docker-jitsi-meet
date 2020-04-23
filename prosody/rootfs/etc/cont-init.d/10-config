@@ -1,5 +1,11 @@
 #!/usr/bin/with-contenv bash
 
+if [[ ! -f /config/.keep ]]; then
+    rm -rf /config
+
+    mkdir -p /config
+fi
+
 if [[ ! -f /etc/saslauthd.conf ]]; then
   tpl /defaults/saslauthd.conf > /etc/saslauthd.conf
   mkdir -pm777 /var/run/saslauthd
@@ -93,3 +99,5 @@ fi
 # certs will be created in /config/data
 mv /config/data/*.{crt,key} /config/certs/ || true
 rm -f /config/data/*.cnf
+
+chown -R prosody:jitsi /config

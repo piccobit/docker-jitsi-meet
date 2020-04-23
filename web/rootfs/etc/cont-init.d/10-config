@@ -1,5 +1,11 @@
 #!/usr/bin/with-contenv bash
 
+if [[ ! -f /config/.keep ]]; then
+    rm -rf /config
+
+    mkdir -p /config
+fi
+
 # make our folders
 mkdir -p \
     /config/{nginx/site-confs,keys} \
