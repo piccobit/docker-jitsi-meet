@@ -1,7 +1,8 @@
 FORCE_REBUILD ?= 0
 JITSI_RELEASE ?= stable
 JITSI_BUILD ?= latest
-JITSI_REPO ?= jitsi
+JITSI_REPO ?= docker-public.kubernetes.zone/jitsi
+JITSI_REPO_PUSH ?= docker-public-push.kubernetes.zone/jitsi
 JITSI_SERVICES ?= base base-java web prosody jicofo jvb jigasi etherpad jibri
 
 BUILD_ARGS := --build-arg JITSI_REPO=$(JITSI_REPO)
@@ -19,10 +20,12 @@ build:
 
 tag:
 	docker tag $(JITSI_REPO)/$(JITSI_SERVICE):latest $(JITSI_REPO)/$(JITSI_SERVICE):$(JITSI_BUILD)
+	docker tag $(JITSI_REPO)/$(JITSI_SERVICE):latest $(JITSI_REPO_PUSH)/$(JITSI_SERVICE):latest
+	docker tag $(JITSI_REPO)/$(JITSI_SERVICE):$(JITSI_BUILD) $(JITSI_REPO_PUSH)/$(JITSI_SERVICE):$(JITSI_BUILD)
 
 push:
-	docker push $(JITSI_REPO)/$(JITSI_SERVICE):latest
-	docker push $(JITSI_REPO)/$(JITSI_SERVICE):$(JITSI_BUILD)
+	docker push $(JITSI_REPO_PUSH)/$(JITSI_SERVICE):latest
+	docker push $(JITSI_REPO_PUSH)/$(JITSI_SERVICE):$(JITSI_BUILD)
 
 %-all:
 	@$(foreach SERVICE, $(JITSI_SERVICES), $(MAKE) --no-print-directory JITSI_SERVICE=$(SERVICE) $(subst -all,;,$@))

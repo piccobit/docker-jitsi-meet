@@ -1,4 +1,4 @@
-ARG JITSI_REPO=jitsi
+ARG JITSI_REPO=docker-public.kubernetes.zone/jitsi
 FROM ${JITSI_REPO}/base-java
 
 #ARG CHROME_RELEASE=latest

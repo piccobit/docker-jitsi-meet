@@ -1,5 +1,5 @@
-ARG JITSI_REPO=quay.io/piccobit
-FROM ${JITSI_REPO}/jitsi-base
+ARG JITSI_REPO=docker-public.kubernetes.zone/jitsi
+FROM ${JITSI_REPO}/base
 
 RUN	\
 	mkdir -p /usr/share/man/man1 && \

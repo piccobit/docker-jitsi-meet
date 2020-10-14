@@ -1,4 +1,4 @@
-ARG JITSI_REPO=piccobit
+ARG JITSI_REPO=docker-public.kubernetes.zone/jitsi
 
 FROM ${JITSI_REPO}/base as builder
 
